@@ -13,6 +13,22 @@
         flex-direction:column;
         align-items:center;
     }
+    
+    #playBtn {
+  background-color: #ff4d6d; /* tono romántico */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', cursive; /* o la fuente que uses */
+  transition: background-color 0.3s ease;
+}
+
+#playBtn:hover {
+  background-color: #e63950; /* tono más intenso al pasar el mouse */
+}
 
     .card{
         position:relative;
@@ -80,6 +96,14 @@
 <audio id="musica" preload="auto" loop>
     <source src="wish.mp3" type="audio/mpeg">
 </audio>
+ <!-- AUDIO -->
+<audio id="musica" preload="auto" loop>
+  <source src="wish.mp3" type="audio/mpeg">
+</audio>
+
+<button id="playBtn" onclick="document.getElementById('musica').play()">
+  💖 Haz clic para empezar la sorpresa 💖
+</button>
 
 <div class="card" id="card">
     <h1>Hola hermosa, ya que disfrutaste de tu bebida y panecito❤️</h1>
@@ -163,4 +187,5 @@ function move(){
 
 </body>
 </html>
+
 
