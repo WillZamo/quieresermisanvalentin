@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Una pregunta importante</title>
+
+<style>
+    body{
+        margin:0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
+        position:relative;
+        margin-top:40px;
+        text-align:center;
+        background:white;
+        padding:40px;
+        border-radius:20px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        max-width:500px;
+        width:90%;
+        min-height:250px;
+        overflow:hidden;
+        z-index:2;
+    }
+
+    h1{color:#ff4b5c;}
+
+    button {
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 18px;
+    border: 2px solid #ff4d6d; /* Borde visible */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #ff4d6d; /* Color de fondo */
+    color: white; /* Texto en blanco */
+        }
+
+    button:hover {
+    background-color: #e63950; /* Fondo más oscuro al pasar el mouse */
+    border-color: #e63950; /* El borde acompaña el cambio */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+    }
+
+    #yes{background:#ff4b5c;color:white;}
+    #no{
+        background:#ccc;
+        position:absolute;
+    }
+
+    .fotos-container {
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center; /* Centra las imágenes en la fila */
+    gap: 20px; /* Espacio entre imágenes */
+}
+
+    .fotos-container img {
+    width: 30%; /* Cada imagen ocupa un tercio del ancho */
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="musica" preload="auto" loop>
+    <source src="wish.MP3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="card">
+    <h1>Hola hermosa, ya que disfrutaste de tu bebida y panecito❤️</h1>
+    <h1>Te quiero hacer una pregunta👀</h1>
+    <p>Presiona descubrir para saber el misterio misterioso</p>
+    <button onclick="next()">Descubrir</button>
+</div>
+
+<div class="fotos-container">
+    <img src="luna.jpeg" alt="Nosotros" onerror="this.src='luna.jpeg'">
+    <img src="nosotros.jpg" alt="Nosotros" onerror="this.src='nosotros.jpeg'">
+    <img src="foto.jpg" alt="Nosotros" onerror="this.src='foto.jpeg'">
+</div>
+
+
+<script>
+function next(){
+    const audio = document.getElementById("musica");
+    audio.volume = 0.35;
+    audio.play().catch(()=>{});
+
+    document.getElementById("card").innerHTML = `
+        <h1>Es que me dijiste que te encantó pero no me respondiste a una pregunta.</h1>
+        <p>Luna es testigo👁️</p>
+        <button onclick="next1()">Pero cual es la preguntaaa</button>
+    `;
+}
+
+function next1(){
+    document.getElementById("card").innerHTML = `
+        <h1>Entonces pues queria saber tu respuesta a dicha pregunta.</h1>
+        <p>De eso depende que sigamos durmiendo juntos y jugando Fortnite asi que avisada estás 🫠</p>
+        <button onclick="next2()">A ver la pregunta pues vergaaa</button>
+    `;
+}
+
+function next2(){
+    document.getElementById("card").innerHTML = `
+ 
+        <h1>O ya dime que no me amas y pues listo verdad ahi la dejamos 😭</h1>
+        <button onclick="final()">Te voy a madrear William</button>
+    `;
+}
+
+function final(){
+    document.getElementById("card").innerHTML = `
+        <h1>¿Entonces si quieres ser mi San Valentin? o al chile muy rico y todo pero nel 💘</h1>
+        <button id="yes" onclick="yes()">Si</button>
+        <button id="no" onmouseover="move()">Nel</button>
+    `;
+}
+
+function yes(){
+    document.getElementById("card").innerHTML = `
+        <div class="apoco-container">
+    <img src="apoco.png" alt="Nosotros" onerror="this.src='apoco.png'">
+</div>
+        <h1>!APOCO!</h1>
+        <p>Te amo mucho❤️</p>
+        <p>Pobre de ti si intentaste presionar el nel 😠, le preguntare los de tu trabajo</p>
+    `;
+}
+
+function move(){
+    const card = document.getElementById("card");
+    const noBtn = document.getElementById("no");
+
+    const cardRect = card.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
+
+    const maxX = cardRect.width - btnRect.width - 20;
+    const maxY = cardRect.height - btnRect.height - 20;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
